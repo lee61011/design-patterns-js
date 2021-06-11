@@ -3,16 +3,26 @@ export {}
 // 继承也会导致类的层次过深，类和类之间出现了耦合，如果修改父类，子类也会跟这变
 class Animal {
   name: string;
+  constructor(name: string) {
+    this.name = name
+  }
   eat() {
-    console.log('吃东西')
+    console.log(`${this.name} eat`)
   }
 }
-let animal = new Animal();
+let animal = new Animal('动物');
 animal.eat();
 
 class Dog extends Animal {
-
+  age: number;
+  constructor(name: string, age: number) {
+    super(name);
+    this.age = age;
+  }
+  speak() {
+    console.log(`${this.name} is barking!`)
+  }
 }
-let dog = new Dog();
-dog.name;
+let dog = new Dog('狗', 5);
 dog.eat();
+dog.speak();
